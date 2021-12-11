@@ -90,11 +90,15 @@ class Aria2c:
 if __name__ == "__main__": 
         parser = argparse.ArgumentParser() 
         parser.add_argument('--name', help='JAV Name',required=True) 
+        parser.add_argument('--host', help='Aria2 Host',required=True) 
+        parser.add_argument('--port', help='Aria2 Port',required=True)
+        parser.add_argument('--pass', help='Aria2 Password', default=None)  
         args = parser.parse_args() 
         options = Options() 
         link = []
         FileList = []
-        client = Aria2c()
+        client = Aria2c(args.host, args.port, args.pass)
+
         options.add_argument("--headless")
         options.add_argument("--no-sandbox") 
         driver = webdriver.Chrome(executable_path='/usr/bin/chromedriver', chrome_options=options)

@@ -5,6 +5,7 @@
 # 环境要求
 
 建议系统：Debian 10/11 || Ubuntu 18.04/20.04/21.04 || CentOS8
+
 Python 3.4+
 
 Selenium

@@ -92,12 +92,12 @@ if __name__ == "__main__":
         parser.add_argument('--name', help='JAV Name',required=True) 
         parser.add_argument('--host', help='Aria2 Host',required=True) 
         parser.add_argument('--port', help='Aria2 Port',required=True)
-        parser.add_argument('--pass', help='Aria2 Password')  
+        parser.add_argument('--token', help='Aria2 Password')  
         args = parser.parse_args() 
         options = Options() 
         link = []
         FileList = []
-        client = Aria2c(args.host, args.port, args.pass)
+        client = Aria2c(args.host, args.port, args.token)
 
         options.add_argument("--headless")
         options.add_argument("--no-sandbox") 
@@ -121,10 +121,10 @@ if __name__ == "__main__":
                     continue
                 else:
                     for _file in ele:
-                        if "GB" in _file.text:
+                        if re.match(r'[+-]?(\d+(\.\d*)?|\.\d+)([eE][+-]?\d+)?GB', _file.text):
                             FileList.append([float(_file.text.replace(" ", "").replace("GB", "")), _file.get_attribute("href")])
                             #print(_file.text.replace(" ", "").replace("GB", ""))
-                        elif "MB" in _file.text:
+                        elif re.match(r'[+-]?(\d+(\.\d*)?|\.\d+)([eE][+-]?\d+)?MB', _file.text):
                             FileList.append([float(_file.text.replace(" ", "").replace("MB", "")), _file.get_attribute("href")])
                     client.addUri(sorted(FileList, key=lambda x: float(x[0]), reverse=True)[0][1])
                 time.sleep(0.6)
@@ -133,4 +133,3 @@ if __name__ == "__main__":
 
         finally:
             driver.quit()
-

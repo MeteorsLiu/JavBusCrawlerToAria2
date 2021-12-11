@@ -19,7 +19,7 @@ python3 -m pip install selenium
 
 # 使用方法
 
-python3 JavBusCrawler.py --name xxx --host xx.xx.xx.xx --port xxxx --pass xxxxxx
+python3 JavBusCrawler.py --name xxx --host xx.xx.xx.xx --port xxxx --token xxxxxx
 
 
 ## 参数解释
@@ -30,5 +30,5 @@ host，Aria2地址
 
 port，Aria2端口
 
-pass，Aria2密码（无密码不需要填）
+token，Aria2密码（无密码不需要填）
 

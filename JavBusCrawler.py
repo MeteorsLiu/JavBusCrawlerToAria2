@@ -92,7 +92,7 @@ if __name__ == "__main__":
         parser.add_argument('--name', help='JAV Name',required=True) 
         parser.add_argument('--host', help='Aria2 Host',required=True) 
         parser.add_argument('--port', help='Aria2 Port',required=True)
-        parser.add_argument('--pass', help='Aria2 Password', default=None)  
+        parser.add_argument('--pass', help='Aria2 Password')  
         args = parser.parse_args() 
         options = Options() 
         link = []

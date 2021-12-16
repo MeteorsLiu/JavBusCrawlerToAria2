@@ -120,10 +120,10 @@ if __name__ == "__main__":
                     continue
                 else:
                     for _file in ele:
-                        if re.match(r'[+-]?(\d+(\.\d*)?|\.\d+)([eE][+-]?\d+)?GB', _file.text) or re.match("[0-9]+GB$"):
+                        if re.match(r'[+-]?(\d+(\.\d*)?|\.\d+)([eE][+-]?\d+)?GB', _file.text) or re.match("[0-9]+GB$",  _file.text):
                             FileList.append([float(_file.text.replace(" ", "").replace("GB", "")), _file.get_attribute("href")])
                             #print(_file.text.replace(" ", "").replace("GB", ""))
-                        elif re.match(r'[+-]?(\d+(\.\d*)?|\.\d+)([eE][+-]?\d+)?MB', _file.text) or re.match("[0-9]+MB$"):
+                        elif re.match(r'[+-]?(\d+(\.\d*)?|\.\d+)([eE][+-]?\d+)?MB', _file.text) or re.match("[0-9]+MB$",  _file.text):
                             FileList.append([float(_file.text.replace(" ", "").replace("MB", ""))/1024, _file.get_attribute("href")])
                     client.addUri(sorted(FileList, key=lambda x: float(x[0]), reverse=True)[0][1])
                 time.sleep(0.6)
